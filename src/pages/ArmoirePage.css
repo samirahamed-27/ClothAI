@@ -1,0 +1,232 @@
+/* ==========================================================================
+   ARMOIRE PAGE STYLES
+   ========================================================================== */
+
+.armoire-page-wrapper {
+  padding: var(--space-md) var(--space-md) 100px var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  animation: pageFadeIn 320ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.armoire-capsule-badge {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-editorial);
+  color: var(--color-raw-sienna);
+  background: var(--color-raw-sienna-pastel);
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+}
+
+.armoire-stat-text {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  color: var(--color-text-muted);
+}
+
+.armoire-heading {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 3rem;
+  line-height: 1;
+  color: var(--color-deep-slate-olive);
+  letter-spacing: -0.02em;
+  margin: 4px 0 8px 0;
+}
+
+.armoire-subheading {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-normal);
+  margin-bottom: var(--space-md);
+}
+
+/* Category pills */
+.armoire-category-tabs {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-bottom: 2px;
+}
+
+.armoire-category-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.category-pill {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+}
+
+.category-pill:hover {
+  border-color: var(--color-deep-slate-olive);
+  color: var(--color-deep-slate-olive);
+}
+
+.category-pill.is-active {
+  background-color: var(--color-deep-slate-olive);
+  border-color: var(--color-deep-slate-olive);
+  color: var(--color-text-inverse);
+  box-shadow: 0 2px 8px rgba(75, 84, 67, 0.25);
+}
+
+/* Armoire Grid */
+.armoire-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.armoire-card {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-soft);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-subtle);
+  overflow: hidden;
+  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.armoire-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card);
+}
+
+.armoire-card-swatch-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background-color: #FCFAF7;
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.swatch-color-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.swatch-color-name {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--color-text-muted);
+}
+
+.armoire-card-body {
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.armoire-card-title {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: var(--color-text-main);
+}
+
+.armoire-card-fabric {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+.armoire-card-meta {
+  margin-top: 6px;
+}
+
+.armoire-proportion-tag {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  letter-spacing: var(--letter-spacing-editorial);
+  text-transform: uppercase;
+  color: var(--color-deep-slate-olive);
+  background: var(--color-surface-soft);
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.armoire-card-action {
+  width: 100%;
+  padding: 10px var(--space-md);
+  background: transparent;
+  border-top: 1px solid var(--color-border-subtle);
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--color-nile-blue);
+  text-align: right;
+  transition: all var(--transition-fast);
+}
+
+.armoire-card-action:hover {
+  background: var(--color-nile-blue-pastel);
+}
+
+/* Empty Placeholder Add Card */
+.armoire-add-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: var(--space-xl) var(--space-md);
+  background: rgba(255, 255, 255, 0.5);
+  border: 2px dashed var(--color-light-brown-drab);
+  border-radius: var(--radius-soft);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-align: center;
+}
+
+.armoire-add-card:hover {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: var(--color-raw-sienna);
+  transform: translateY(-1px);
+}
+
+.add-icon-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--color-raw-sienna-pastel);
+  color: var(--color-raw-sienna);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+
+.add-title {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 600;
+  font-size: var(--font-size-md);
+  color: var(--color-deep-slate-olive);
+}
+
+.add-subtitle {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  color: var(--color-text-muted);
+}

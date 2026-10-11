@@ -77,6 +77,20 @@
   justify-content: space-between;
   padding: 0 10px;
   box-shadow: inset 0 0 2px rgba(255, 255, 255, 0.15);
+  pointer-events: auto;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: transform var(--transition-fast), background-color var(--transition-fast);
+}
+
+.dynamic-island:hover {
+  transform: scale(1.05);
+  background-color: #1a1e1b;
+}
+
+.dynamic-island:active {
+  transform: scale(0.96);
 }
 
 .sensor-camera {
@@ -140,20 +154,16 @@
 /* Content Area inside Phone */
 .mobile-screen-content {
   flex: 1;
-  overflow-y: auto;
-  overflow-x: hidden;
-  -webkit-overflow-scrolling: touch;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
   position: relative;
-  scroll-behavior: smooth;
-  padding-bottom: 24px;
+  min-height: 0;
+  background-color: var(--color-bg);
 }
 
-.mobile-screen-content::-webkit-scrollbar {
-  width: 3px;
-}
-.mobile-screen-content::-webkit-scrollbar-thumb {
-  background-color: var(--color-border);
-  border-radius: 10px;
+.mobile-screen-content.scroll-locked {
+  overflow: hidden !important;
 }
 
 /* Home Indicator Bar */

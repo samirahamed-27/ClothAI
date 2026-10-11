@@ -4,7 +4,7 @@ import Button from './Button';
 import FashionCard from './FashionCard';
 import './StyleGuide.css';
 
-export default function StyleGuide({ onShowToast }) {
+export default function StyleGuide({ onShowToast, onReplaySplash }) {
   const [activeTab, setActiveTab] = useState('all');
   const [activeThemeColor, setActiveThemeColor] = useState('nile-blue');
 
@@ -44,11 +44,21 @@ export default function StyleGuide({ onShowToast }) {
     },
   ];
 
-  const handleCopyHex = (hex, label) => {
-    navigator.clipboard?.writeText(hex).then(
-      () => onShowToast(`Copied ${label} (${hex}) to clipboard!`),
-      () => onShowToast(`Selected ${hex}`)
-    );
+  const handleCopyHex = async (hex, label) => {
+    let copied = false;
+    if (typeof navigator !== 'undefined' && navigator.clipboard && navigator.clipboard.writeText) {
+      try {
+        await navigator.clipboard.writeText(hex);
+        copied = true;
+      } catch {
+        copied = false;
+      }
+    }
+    if (copied) {
+      onShowToast(`Copied ${label} (${hex}) to clipboard!`);
+    } else {
+      onShowToast(`Selected ${label} (${hex})`);
+    }
   };
 
   const navTabs = [
@@ -73,9 +83,21 @@ export default function StyleGuide({ onShowToast }) {
           Tactile luxury design tokens, typography, and mobile-first fashion architecture.
         </p>
 
-        <div className="masthead-canvas-badge">
-          <span className="canvas-dot"></span>
-          <span>Background: <strong>#FAF7F2</strong> (Warm Linen Off-White)</span>
+        <div className="masthead-actions-row">
+          <div className="masthead-canvas-badge">
+            <span className="canvas-dot"></span>
+            <span>Canvas: <strong>#FAF7F2</strong></span>
+          </div>
+          {onReplaySplash && (
+            <button
+              type="button"
+              className="masthead-replay-btn"
+              onClick={onReplaySplash}
+              title="Replay opening splash screen"
+            >
+              ✦ Replay Splash
+            </button>
+          )}
         </div>
 
         {/* Navigation filter pills */}
@@ -440,17 +462,37 @@ export default function StyleGuide({ onShowToast }) {
               ))}
             </div>
 
-            <div className="lab-preview-box" style={{ borderColor: colorPairs.find(p => p.primary.varName.includes(activeThemeColor))?.primary.hex }}>
-              <div
-                className="lab-accent-ribbon"
-                style={{ backgroundColor: colorPairs.find(p => p.primary.varName.includes(activeThemeColor))?.primary.hex }}
-              >
-                <span>Active Accent: {activeThemeColor}</span>
-              </div>
-              <p className="lab-sample-text">
-                "Simplicity is the keynote of all true elegance."
-              </p>
-            </div>
+            {(() => {
+              const selectedPair = colorPairs.find((p) => p.primary.varName.includes(activeThemeColor)) || colorPairs[0];
+              return (
+                <div className="lab-preview-box" style={{ borderColor: selectedPair.primary.hex }}>
+                  <div
+                    className="lab-accent-ribbon"
+                    style={{ backgroundColor: selectedPair.primary.hex, color: selectedPair.textColorOnPrimary, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
+                  >
+                    <span>{selectedPair.name} ({selectedPair.primary.hex})</span>
+                    <span style={{ fontSize: '10px', opacity: 0.9 }}>Tint: {selectedPair.tint.hex}</span>
+                  </div>
+                  <div style={{ padding: '14px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                    <p className="lab-sample-text" style={{ padding: 0 }}>
+                      "Simplicity is the keynote of all true elegance."
+                    </p>
+                    <button
+                      type="button"
+                      className="drape-button radius-soft btn-sm"
+                      style={{
+                        backgroundColor: selectedPair.primary.hex,
+                        color: selectedPair.textColorOnPrimary,
+                        alignSelf: 'flex-start',
+                      }}
+                      onClick={() => onShowToast(`Tested ${selectedPair.name} button`)}
+                    >
+                      Sample {selectedPair.name} Button
+                    </button>
+                  </div>
+                </div>
+              );
+            })()}
           </div>
         </section>
       )}

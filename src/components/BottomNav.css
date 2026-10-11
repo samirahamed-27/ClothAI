@@ -1,0 +1,154 @@
+/* ==========================================================================
+   BOTTOM NAVIGATION BAR COMPONENT STYLES
+   Features:
+   - Off-white #FAF7F2 background with soft top shadow
+   - Rounded top corners ("chin" look: 20px radius)
+   - Labels in Cormorant Garamond italic ~18px
+   - Active: Deep Slate Olive #4B5443 with short Raw Sienna #C9803F underline
+   - Inactive: Light Brown Drab #B49C7E
+   - Safe-area bottom padding for mobile home indicator
+   ========================================================================== */
+
+.drape-bottom-nav {
+  position: relative;
+  flex-shrink: 0;
+  width: 100%;
+  z-index: 80;
+  
+  /* Off-white background with subtle tactile blur */
+  background-color: rgba(250, 247, 242, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  
+  /* Rounded top corners (the "chin" look) */
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  
+  /* Soft top shadow */
+  box-shadow: 
+    0 -4px 20px -2px rgba(75, 84, 67, 0.08),
+    0 -1px 3px rgba(75, 84, 67, 0.04);
+  border-top: 1px solid rgba(75, 84, 67, 0.1);
+
+  /* Safe-area padding for mobile home indicator */
+  padding-top: 10px;
+  padding-bottom: max(12px, calc(8px + env(safe-area-inset-bottom, 14px)));
+  padding-left: var(--space-md);
+  padding-right: var(--space-md);
+
+  user-select: none;
+  box-sizing: border-box;
+}
+
+.nav-tabs-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 380px;
+  margin: 0 auto;
+}
+
+/* -------------------------------------------------------------------------
+   Tab Items
+   ------------------------------------------------------------------------- */
+.nav-tab-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  padding: 4px 16px 2px 16px;
+  position: relative;
+  transition: transform var(--transition-fast), color var(--transition-fast);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.nav-tab-item:active {
+  transform: scale(0.94);
+}
+
+/* Icons */
+.nav-tab-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2px;
+  transition: transform var(--transition-fast), color var(--transition-fast);
+}
+
+.nav-tab-item:hover .nav-tab-icon {
+  transform: translateY(-1px);
+}
+
+/* -------------------------------------------------------------------------
+   Tab Label: Cormorant Garamond italic, ~18px
+   ------------------------------------------------------------------------- */
+.nav-tab-label {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.125rem; /* ~18px */
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  transition: color var(--transition-fast);
+}
+
+/* -------------------------------------------------------------------------
+   Inactive Tab State: Light Brown Drab (#B49C7E)
+   ------------------------------------------------------------------------- */
+.nav-tab-item.is-inactive {
+  color: var(--color-light-brown-drab); /* #B49C7E */
+}
+
+.nav-tab-item.is-inactive .nav-tab-icon {
+  color: var(--color-light-brown-drab);
+  opacity: 0.85;
+}
+
+.nav-tab-item.is-inactive:hover {
+  color: var(--color-deep-slate-olive);
+}
+
+.nav-tab-item.is-inactive:hover .nav-tab-icon {
+  color: var(--color-deep-slate-olive);
+  opacity: 1;
+}
+
+/* -------------------------------------------------------------------------
+   Active Tab State: Deep Slate Olive (#4B5443)
+   ------------------------------------------------------------------------- */
+.nav-tab-item.is-active {
+  color: var(--color-deep-slate-olive); /* #4B5443 */
+}
+
+.nav-tab-item.is-active .nav-tab-label {
+  font-weight: 600;
+  color: var(--color-deep-slate-olive);
+}
+
+.nav-tab-item.is-active .nav-tab-icon {
+  color: var(--color-deep-slate-olive);
+  transform: translateY(-1px);
+}
+
+/* -------------------------------------------------------------------------
+   Short Raw Sienna Underline Indicator (#C9803F)
+   ------------------------------------------------------------------------- */
+.nav-active-underline {
+  width: 18px; /* Short indicator */
+  height: 2px;
+  background-color: var(--color-raw-sienna); /* #C9803F */
+  border-radius: var(--radius-pill);
+  margin-top: 3px;
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+  box-shadow: 0 1px 3px rgba(201, 128, 63, 0.4);
+}
+
+.nav-active-underline.is-visible {
+  opacity: 1;
+  transform: scaleX(1);
+}

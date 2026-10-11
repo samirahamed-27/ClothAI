@@ -1,18 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './PhoneFrame.css';
 
-export default function PhoneFrame({ children, isDeviceBezel, onToggleBezel }) {
-  const [currentTime] = useState('09:41');
+export default function PhoneFrame({ children, isDeviceBezel, onToggleBezel, isScrollLocked = false }) {
+  // Dynamic mobile clock that updates with local time
+  const [currentTime, setCurrentTime] = useState(() => {
+    const now = new Date();
+    return now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
+  });
+
+  useEffect(() => {
+    const updateTime = () => {
+      const now = new Date();
+      setCurrentTime(now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false }));
+    };
+
+    const interval = setInterval(updateTime, 10000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className={`phone-chassis ${isDeviceBezel ? 'with-bezel' : 'seamless'}`} id="drape-phone-chassis">
       {/* Smartphone Hardware Elements (Desktop Bezel Mode) */}
       {isDeviceBezel && (
         <div className="phone-hardware-notch">
-          <div className="dynamic-island">
+          <button
+            type="button"
+            className="dynamic-island"
+            onClick={onToggleBezel}
+            title="Click Dynamic Island to toggle seamless view"
+            aria-label="Toggle seamless view"
+          >
             <div className="sensor-camera"></div>
             <div className="sensor-mic"></div>
-          </div>
+          </button>
         </div>
       )}
 
@@ -39,7 +59,7 @@ export default function PhoneFrame({ children, isDeviceBezel, onToggleBezel }) {
       </header>
 
       {/* Main Mobile App Viewport (Constrained to max-width 430px) */}
-      <main className="mobile-screen-content" id="mobile-viewport">
+      <main className={`mobile-screen-content ${isScrollLocked ? 'scroll-locked' : ''}`} id="mobile-viewport">
         {children}
       </main>
 

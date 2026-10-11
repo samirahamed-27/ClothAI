@@ -13,8 +13,19 @@ export default function FashionCard({
   sizes = ['XS', 'S', 'M', 'L'],
   onAddToCart,
 }) {
-  const [selectedSize, setSelectedSize] = useState('S');
+  const [selectedSize, setSelectedSize] = useState(() => (sizes && sizes.length > 0 ? (sizes.includes('S') ? 'S' : sizes[0]) : ''));
   const [isLiked, setIsLiked] = useState(false);
+  const [isAdded, setIsAdded] = useState(false);
+
+  const handleAdd = () => {
+    setIsAdded(true);
+    if (onAddToCart) {
+      onAddToCart(`${title} (${selectedSize})`);
+    }
+    setTimeout(() => {
+      setIsAdded(false);
+    }, 1800);
+  };
 
   return (
     <article className="fashion-card" id="sample-fashion-card">
@@ -114,18 +125,24 @@ export default function FashionCard({
         {/* Action Button */}
         <div className="card-actions">
           <Button
-            variant="primary"
+            variant={isAdded ? "olive" : "primary"}
             size="md"
             fullWidth
-            onClick={() => onAddToCart && onAddToCart(`${title} (${selectedSize})`)}
+            onClick={handleAdd}
             iconRight={
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
+              isAdded ? (
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              ) : (
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              )
             }
           >
-            Curate To Wardrobe
+            {isAdded ? "Added to Wardrobe" : "Curate To Wardrobe"}
           </Button>
         </div>
       </div>

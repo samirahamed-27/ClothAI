@@ -23,5 +23,8 @@ dist-ssr
 *.sln
 *.sw?
 ._*
+**/._*
+.DS_Store
+**/.DS_Store
 .Spotlight-V100
 .Trashes

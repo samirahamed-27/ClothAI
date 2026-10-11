@@ -330,6 +330,28 @@ img, svg {
   box-shadow: 0 0 0 2px var(--color-raw-sienna-pastel);
 }
 
+.desktop-meta-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.desktop-action-btn {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-deep-slate-olive);
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  transition: all var(--transition-fast);
+}
+
+.desktop-action-btn:hover {
+  background: var(--color-deep-slate-olive);
+  color: var(--color-text-inverse);
+}
+
 .desktop-toggle-btn {
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-medium);

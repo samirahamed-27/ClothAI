@@ -1,0 +1,48 @@
+/* ==========================================================================
+   APP SHELL COMPONENT STYLES
+   Hosts scrollable routed pages with stationary fixed BottomNav
+   ========================================================================== */
+
+.drape-app-shell {
+  width: 100%;
+  height: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  min-height: 0;
+  background-color: var(--color-bg);
+}
+
+/* Page Transition Wrapper (Independently Scrollable Container) */
+.app-page-transition-wrapper {
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  animation: appPageFadeIn 300ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.app-page-transition-wrapper::-webkit-scrollbar {
+  width: 3px;
+}
+.app-page-transition-wrapper::-webkit-scrollbar-thumb {
+  background-color: var(--color-border);
+  border-radius: 10px;
+}
+
+/* Smooth Page Fade Transition */
+@keyframes appPageFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

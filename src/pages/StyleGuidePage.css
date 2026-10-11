@@ -1,0 +1,46 @@
+/* ==========================================================================
+   STYLE GUIDE PAGE STYLES
+   ========================================================================== */
+
+.styleguide-page-container {
+  padding-bottom: 90px;
+  animation: pageFadeIn 320ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.styleguide-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-xs) var(--space-md);
+  background: #FCFAF7;
+  border-bottom: 1px solid var(--color-border);
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  backdrop-filter: blur(8px);
+}
+
+.styleguide-back-link {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--color-nile-blue);
+  text-decoration: none;
+  transition: opacity var(--transition-fast);
+}
+
+.styleguide-back-link:hover {
+  opacity: 0.75;
+}
+
+.styleguide-badge-pill {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  letter-spacing: var(--letter-spacing-editorial);
+  text-transform: uppercase;
+  color: var(--color-deep-slate-olive);
+  background: var(--color-deep-slate-olive-pastel);
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+}

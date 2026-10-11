@@ -1,0 +1,261 @@
+/* ==========================================================================
+   SPLASH SCREEN COMPONENT STYLES
+   Features:
+   - Off-white #FAF7F2 canvas with soft Nile Blue pastel #D3E4E8 gradient at bottom
+   - Centered Cormorant Garamond italic fashion quote
+   - Author in small Jost uppercase with wide letter spacing
+   - Raw Sienna #C9803F drawing line animation
+   - Smooth fade-in, 2.5s hold, and smooth fade-out
+   ========================================================================== */
+
+.drape-splash-screen {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-2xl) var(--space-xl) var(--space-xl) var(--space-xl);
+  
+  /* Off-white background with soft Nile Blue pastel gradient at the bottom */
+  background: linear-gradient(
+    180deg,
+    #FAF7F2 0%,
+    #FAF7F2 55%,
+    rgba(211, 228, 232, 0.45) 80%,
+    #D3E4E8 100%
+  );
+  
+  cursor: pointer;
+  user-select: none;
+  overflow: hidden;
+  box-sizing: border-box;
+
+  touch-action: none;
+  overscroll-behavior: contain;
+
+  /* Fade in animation */
+  animation: splashFadeIn 480ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transition: opacity 450ms cubic-bezier(0.4, 0, 0.2, 1), transform 450ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.drape-splash-screen.is-fading-out {
+  opacity: 0;
+  transform: scale(1.02);
+  pointer-events: none;
+}
+
+/* Subtle luxury ambient glow behind quote */
+.drape-splash-screen::before {
+  content: '';
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(201, 128, 63, 0.08) 0%, rgba(250, 247, 242, 0) 70%);
+  pointer-events: none;
+  border-radius: 50%;
+}
+
+/* -------------------------------------------------------------------------
+   Brand Header in Splash
+   ------------------------------------------------------------------------- */
+.splash-header-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  margin-top: var(--space-md);
+  opacity: 0;
+  animation: splashElementFade 600ms cubic-bezier(0.16, 1, 0.3, 1) 150ms forwards;
+}
+
+.splash-monogram {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 2rem;
+  line-height: 1;
+  color: var(--color-nile-blue);
+  margin-bottom: 2px;
+}
+
+.splash-brand-text {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.25em;
+  color: var(--color-deep-slate-olive);
+}
+
+.splash-edition-tag {
+  font-family: var(--font-sans);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  color: var(--color-light-brown-drab);
+  margin-top: 2px;
+}
+
+/* -------------------------------------------------------------------------
+   Quote Container
+   ------------------------------------------------------------------------- */
+.splash-quote-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 340px;
+  margin: auto 0;
+  padding: 0 var(--space-xs);
+  position: relative;
+  z-index: 10;
+  opacity: 0;
+  animation: splashQuoteAppear 650ms cubic-bezier(0.16, 1, 0.3, 1) 250ms forwards;
+}
+
+.splash-quote-glyph {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 3rem;
+  line-height: 0.8;
+  color: var(--color-raw-sienna);
+  opacity: 0.45;
+  margin-bottom: -6px;
+}
+
+.splash-quote-text {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.65rem;
+  line-height: 1.35;
+  color: var(--color-deep-slate-olive);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+/* -------------------------------------------------------------------------
+   Raw Sienna Drawing Line Animation
+   ------------------------------------------------------------------------- */
+.splash-line-wrapper {
+  width: 100%;
+  max-width: 140px;
+  height: 2px;
+  margin: 18px auto 14px auto;
+  overflow: hidden;
+  background-color: rgba(201, 128, 63, 0.15); /* Light trace */
+  border-radius: var(--radius-pill);
+}
+
+.splash-sienna-line {
+  height: 100%;
+  width: 100%;
+  background-color: var(--color-raw-sienna); /* #C9803F */
+  border-radius: var(--radius-pill);
+  transform-origin: left center;
+  transform: scaleX(0);
+  animation: drawSiennaLine 2500ms cubic-bezier(0.25, 1, 0.5, 1) 300ms forwards;
+  box-shadow: 0 0 6px rgba(201, 128, 63, 0.4);
+}
+
+/* -------------------------------------------------------------------------
+   Author & Context Text
+   ------------------------------------------------------------------------- */
+.splash-author-text {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.22em; /* Wide letter spacing */
+  text-transform: uppercase;
+  color: var(--color-text-main);
+  margin: 0;
+}
+
+.splash-context-text {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+  margin-top: 4px;
+}
+
+/* -------------------------------------------------------------------------
+   Skip Hint Footer
+   ------------------------------------------------------------------------- */
+.splash-footer-hint {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: var(--space-xs);
+  opacity: 0;
+  animation: splashElementFade 700ms cubic-bezier(0.16, 1, 0.3, 1) 500ms forwards;
+}
+
+.splash-skip-pill {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(8px);
+  padding: 5px 14px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border-subtle);
+  transition: all var(--transition-fast);
+}
+
+.drape-splash-screen:hover .splash-skip-pill {
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--color-nile-blue);
+}
+
+/* -------------------------------------------------------------------------
+   Keyframe Animations
+   ------------------------------------------------------------------------- */
+@keyframes splashFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes splashElementFade {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes splashQuoteAppear {
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes drawSiennaLine {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}

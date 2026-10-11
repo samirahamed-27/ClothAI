@@ -1,0 +1,190 @@
+/* ==========================================================================
+   ATELIER PAGE STYLES
+   ========================================================================== */
+
+.atelier-page-wrapper {
+  padding: var(--space-md) var(--space-md) 100px var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  animation: pageFadeIn 320ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.page-editorial-header {
+  display: flex;
+  flex-direction: column;
+  padding-top: var(--space-xs);
+}
+
+.header-badge-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.atelier-season-badge {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-editorial);
+  color: var(--color-deep-slate-olive);
+  background: var(--color-deep-slate-olive-pastel);
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+}
+
+.atelier-live-dot {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--color-nile-blue);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.atelier-live-dot::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-nile-blue);
+  box-shadow: 0 0 0 2px var(--color-nile-blue-pastel);
+}
+
+.atelier-heading {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 3rem;
+  line-height: 1;
+  color: var(--color-deep-slate-olive);
+  letter-spacing: -0.02em;
+  margin: 4px 0 8px 0;
+}
+
+.atelier-subheading {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-normal);
+  margin-bottom: var(--space-md);
+}
+
+/* Style Guide Banner */
+.atelier-styleguide-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-sm) var(--space-md);
+  background: #FCFAF7;
+  border: 1px dashed var(--color-light-brown-drab);
+  border-radius: var(--radius-soft);
+  gap: var(--space-sm);
+}
+
+.banner-text-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.banner-title {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 600;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-main);
+}
+
+.banner-sub {
+  font-size: 11px;
+  color: var(--color-text-muted);
+}
+
+.banner-link-btn {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--color-nile-blue);
+  background: var(--color-nile-blue-pastel);
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+}
+
+.banner-link-btn:hover {
+  background: var(--color-nile-blue);
+  color: var(--color-text-inverse);
+}
+
+/* Sections */
+.atelier-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.section-header-compact {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.section-eyebrow {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-editorial);
+  text-transform: uppercase;
+  color: var(--color-light-brown-drab);
+}
+
+.section-title-sm {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: var(--color-deep-slate-olive);
+}
+
+/* Footer Quote */
+.atelier-footer-quote {
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-border-subtle);
+  text-align: center;
+}
+
+.atelier-quote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.1rem;
+  line-height: var(--line-height-normal);
+  color: var(--color-deep-slate-olive);
+}
+
+.atelier-quote cite {
+  display: block;
+  font-family: var(--font-sans);
+  font-style: normal;
+  font-size: 11px;
+  letter-spacing: var(--letter-spacing-editorial);
+  text-transform: uppercase;
+  color: var(--color-light-brown-drab);
+  margin-top: 6px;
+}
+
+/* Page fade transition */
+@keyframes pageFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
