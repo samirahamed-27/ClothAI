@@ -1,0 +1,176 @@
+/* ==========================================================================
+   PHONE FRAME COMPONENT STYLES
+   Constrained to 430px max width centered on desktop
+   ========================================================================== */
+
+.phone-chassis {
+  width: 100%;
+  max-width: var(--mobile-max-width);
+  background-color: var(--color-bg);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-smooth);
+}
+
+/* 1. Phone Bezel Mode (Desktop Luxury Frame) */
+.phone-chassis.with-bezel {
+  border-radius: 44px;
+  box-shadow: 
+    0 0 0 10px #1E231F,
+    0 0 0 12px #3D4439,
+    0 25px 60px -15px rgba(47, 111, 126, 0.25),
+    0 10px 25px -5px rgba(75, 84, 67, 0.2);
+  margin: 12px auto 32px auto;
+  min-height: 860px;
+  max-height: 90vh;
+  overflow: hidden;
+}
+
+/* 2. Seamless Mode (Flat 430px Container) */
+.phone-chassis.seamless {
+  border-radius: var(--radius-soft);
+  box-shadow: var(--shadow-floating);
+  border: 1px solid var(--color-border);
+  margin: 8px auto 24px auto;
+  min-height: 800px;
+  overflow: hidden;
+}
+
+/* Mobile responsive fallback: On phone viewports <= 460px */
+@media (max-width: 460px) {
+  .phone-chassis.with-bezel,
+  .phone-chassis.seamless {
+    border-radius: 0;
+    box-shadow: none;
+    border: none;
+    margin: 0;
+    max-width: 100%;
+    min-height: 100vh;
+    max-height: none;
+  }
+
+  .phone-hardware-notch {
+    display: none;
+  }
+}
+
+/* Smartphone Hardware: Dynamic Island */
+.phone-hardware-notch {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.dynamic-island {
+  width: 110px;
+  height: 28px;
+  background-color: #121513;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  box-shadow: inset 0 0 2px rgba(255, 255, 255, 0.15);
+}
+
+.sensor-camera {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #2a3d45, #080d0f);
+  border: 1px solid #1f272a;
+}
+
+.sensor-mic {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #0c1012;
+}
+
+/* Status Bar */
+.mobile-status-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 22px 8px 22px;
+  font-family: var(--font-sans);
+  color: var(--color-text-main);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: -0.01em;
+  z-index: 50;
+  background: transparent;
+  user-select: none;
+}
+
+.with-bezel .mobile-status-bar {
+  padding-top: 14px;
+}
+
+.status-time {
+  font-weight: var(--font-weight-semibold);
+  font-size: 13px;
+  color: var(--color-text-main);
+}
+
+.status-indicators {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.status-icon {
+  color: var(--color-text-main);
+}
+
+.network-badge {
+  font-size: 10px;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: -0.02em;
+  color: var(--color-text-main);
+}
+
+/* Content Area inside Phone */
+.mobile-screen-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  position: relative;
+  scroll-behavior: smooth;
+  padding-bottom: 24px;
+}
+
+.mobile-screen-content::-webkit-scrollbar {
+  width: 3px;
+}
+.mobile-screen-content::-webkit-scrollbar-thumb {
+  background-color: var(--color-border);
+  border-radius: 10px;
+}
+
+/* Home Indicator Bar */
+.mobile-home-indicator-zone {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 0 10px 0;
+  background: transparent;
+  pointer-events: none;
+  z-index: 50;
+}
+
+.home-indicator-pill {
+  width: 134px;
+  height: 4.5px;
+  background-color: rgba(75, 84, 67, 0.35);
+  border-radius: 10px;
+  transition: background-color var(--transition-fast);
+}

@@ -1,0 +1,48 @@
+/* ==========================================================================
+   APP COMPONENT STYLES
+   ========================================================================== */
+
+/* Toast notification */
+.drape-toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--color-deep-slate-olive);
+  color: var(--color-text-inverse);
+  padding: 10px 20px;
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-floating);
+  z-index: 9999;
+  animation: toastFadeIn 240ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  pointer-events: none;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.toast-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.toast-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-raw-sienna);
+}
+
+@keyframes toastFadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 12px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}

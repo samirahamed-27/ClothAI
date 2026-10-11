@@ -1,0 +1,346 @@
+/* ==========================================================================
+   DRAPE DESIGN SYSTEM — GLOBAL STYLES & CSS TOKENS
+   Mobile-First Editorial Fashion Application Design Tokens
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+
+:root {
+  /* -------------------------------------------------------------------------
+     1. COLOR PALETTE
+     ------------------------------------------------------------------------- */
+  /* Canvas Background */
+  --color-bg: #FAF7F2;
+
+  /* Primary Brand Colors */
+  --color-nile-blue: #2F6F7E;
+  --color-deep-slate-olive: #4B5443;
+  --color-light-brown-drab: #B49C7E;
+  --color-raw-sienna: #C9803F;
+
+  /* Pastel Tints (Paired with Primaries) */
+  --color-nile-blue-pastel: #D3E4E8;
+  --color-deep-slate-olive-pastel: #DCE0D0;
+  --color-light-brown-drab-pastel: #EBE1D4;
+  --color-raw-sienna-pastel: #F3DFCB;
+
+  /* Semantic Color Mappings */
+  --color-primary: var(--color-nile-blue);
+  --color-primary-tint: var(--color-nile-blue-pastel);
+  --color-secondary: var(--color-deep-slate-olive);
+  --color-secondary-tint: var(--color-deep-slate-olive-pastel);
+  --color-accent: var(--color-raw-sienna);
+  --color-accent-tint: var(--color-raw-sienna-pastel);
+  --color-neutral: var(--color-light-brown-drab);
+  --color-neutral-tint: var(--color-light-brown-drab-pastel);
+
+  /* Surface & Text Tokens */
+  --color-surface: #FFFFFF;
+  --color-surface-soft: #F5EFEB;
+  --color-surface-glass: rgba(255, 255, 255, 0.85);
+  --color-text-main: #212520;
+  --color-text-muted: #5E6559;
+  --color-text-light: #8A9284;
+  --color-text-inverse: #FAF7F2;
+  --color-border: rgba(75, 84, 67, 0.14);
+  --color-border-subtle: rgba(75, 84, 67, 0.08);
+
+  /* -------------------------------------------------------------------------
+     2. TYPOGRAPHY SYSTEM
+     ------------------------------------------------------------------------- */
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Jost', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Font Sizes */
+  --font-size-xs: 0.75rem;     /* 12px */
+  --font-size-sm: 0.875rem;    /* 14px */
+  --font-size-base: 1rem;      /* 16px */
+  --font-size-md: 1.125rem;    /* 18px */
+  --font-size-lg: 1.25rem;     /* 20px */
+  --font-size-xl: 1.5rem;      /* 24px */
+  --font-size-2xl: 1.875rem;   /* 30px */
+  --font-size-3xl: 2.25rem;    /* 36px */
+  --font-size-display: 2.75rem;/* 44px */
+
+  /* Line Heights */
+  --line-height-tight: 1.15;
+  --line-height-snug: 1.3;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.65;
+
+  /* Font Weights */
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Letter Spacing */
+  --letter-spacing-tight: -0.02em;
+  --letter-spacing-normal: 0em;
+  --letter-spacing-wide: 0.04em;
+  --letter-spacing-editorial: 0.1em;
+
+  /* -------------------------------------------------------------------------
+     3. SPACING SCALE
+     ------------------------------------------------------------------------- */
+  --space-3xs: 2px;
+  --space-2xs: 4px;
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 20px;
+  --space-xl: 24px;
+  --space-2xl: 32px;
+  --space-3xl: 40px;
+  --space-4xl: 48px;
+  --space-5xl: 64px;
+
+  /* -------------------------------------------------------------------------
+     4. BORDER RADIUS
+     ------------------------------------------------------------------------- */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-soft: 16px; /* Primary requested soft border-radius */
+  --radius-lg: 22px;
+  --radius-pill: 9999px;
+
+  /* -------------------------------------------------------------------------
+     5. SHADOW STYLES (TACTILE LUXURY AESTHETIC)
+     ------------------------------------------------------------------------- */
+  --shadow-subtle: 0 4px 18px -2px rgba(47, 111, 126, 0.07), 0 2px 6px -1px rgba(75, 84, 67, 0.04);
+  --shadow-card: 0 8px 28px -4px rgba(75, 84, 67, 0.09), 0 2px 8px -2px rgba(47, 111, 126, 0.04);
+  --shadow-hover: 0 14px 34px -5px rgba(47, 111, 126, 0.15), 0 4px 12px -2px rgba(75, 84, 67, 0.08);
+  --shadow-floating: 0 20px 45px -8px rgba(47, 111, 126, 0.18);
+  --shadow-inset-subtle: inset 0 1px 2px rgba(0, 0, 0, 0.04);
+
+  /* -------------------------------------------------------------------------
+     6. DEVICE CONSTRAINTS & TRANSITIONS
+     ------------------------------------------------------------------------- */
+  --mobile-max-width: 430px;
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 250ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-spring: 380ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ==========================================================================
+   CSS RESET & BASE DEFAULTS
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  min-height: 100%;
+  background-color: #EFE9E0; /* Desktop atmospheric backdrop framing the app */
+  color: var(--color-text-main);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: var(--line-height-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Root layout: centers the mobile canvas on desktop */
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0;
+}
+
+/* Interactive elements base */
+button {
+  font-family: var(--font-sans);
+  cursor: pointer;
+  border: none;
+  background: none;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* ==========================================================================
+   TYPOGRAPHY PRESETS
+   ========================================================================== */
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+/* Editorial Cormorant Garamond Heading Styles */
+.heading-display {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 600;
+  font-size: var(--font-size-display);
+  line-height: var(--line-height-tight);
+  color: var(--color-deep-slate-olive);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+.heading-h1 {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 600;
+  font-size: var(--font-size-3xl);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-main);
+}
+
+.heading-h2 {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: var(--font-size-2xl);
+  line-height: var(--line-height-snug);
+  color: var(--color-text-main);
+}
+
+.heading-h3 {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 600;
+  font-size: var(--font-size-xl);
+  line-height: var(--line-height-snug);
+  color: var(--color-deep-slate-olive);
+}
+
+.editorial-quote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-deep-slate-olive);
+}
+
+.editorial-caption {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-editorial);
+  text-transform: uppercase;
+  color: var(--color-light-brown-drab);
+}
+
+/* ==========================================================================
+   MOBILE CONTAINER WRAPPER
+   Constraint: 430px max width centered on desktop
+   ========================================================================== */
+.mobile-app-shell {
+  width: 100%;
+  max-width: var(--mobile-max-width);
+  min-height: 100vh;
+  background-color: var(--color-bg);
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Scrollbar refinement */
+.mobile-app-shell::-webkit-scrollbar {
+  width: 4px;
+}
+.mobile-app-shell::-webkit-scrollbar-thumb {
+  background-color: var(--color-border);
+  border-radius: var(--radius-pill);
+}
+
+/* ==========================================================================
+   DESKTOP AMBIENT CANVAS (SURROUNDING PHONE ON LARGE SCREENS)
+   ========================================================================== */
+.desktop-preview-container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: var(--space-xl) var(--space-md);
+  background: radial-gradient(circle at 50% 10%, #FAF7F2 0%, #E7DEC8 100%);
+  position: relative;
+}
+
+@media (max-width: 460px) {
+  .desktop-preview-container {
+    padding: 0;
+    background: var(--color-bg);
+  }
+}
+
+/* Desktop header with information bar */
+.desktop-meta-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 620px;
+  margin-bottom: var(--space-md);
+  padding: var(--space-xs) var(--space-md);
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-subtle);
+}
+
+@media (max-width: 460px) {
+  .desktop-meta-bar {
+    display: none;
+  }
+}
+
+.desktop-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--color-deep-slate-olive);
+}
+
+.desktop-badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--color-raw-sienna);
+  display: inline-block;
+  box-shadow: 0 0 0 2px var(--color-raw-sienna-pastel);
+}
+
+.desktop-toggle-btn {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-nile-blue);
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  background: var(--color-nile-blue-pastel);
+  transition: all var(--transition-fast);
+}
+
+.desktop-toggle-btn:hover {
+  background: var(--color-nile-blue);
+  color: var(--color-text-inverse);
+}

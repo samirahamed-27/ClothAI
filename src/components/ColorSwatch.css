@@ -1,0 +1,141 @@
+/* ==========================================================================
+   COLOR SWATCH COMPONENT STYLES
+   ========================================================================== */
+
+.color-pair-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-soft);
+  box-shadow: var(--shadow-subtle);
+  overflow: hidden;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.color-pair-card:hover {
+  box-shadow: var(--shadow-card);
+}
+
+.color-card-header {
+  padding: var(--space-sm) var(--space-md);
+  background: #FCFAF7;
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.color-title-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2px;
+}
+
+.color-name {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 600;
+  font-size: var(--font-size-md);
+  color: var(--color-text-main);
+}
+
+.color-role-tag {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-editorial);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  background: var(--color-surface-soft);
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+}
+
+.color-description {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-normal);
+}
+
+/* Swatches side-by-side split view */
+.swatches-split-view {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 110px;
+}
+
+.swatch-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: var(--space-xs) var(--space-sm);
+  text-align: left;
+  position: relative;
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.swatch-panel:last-child {
+  border-right: none;
+}
+
+.swatch-panel:hover {
+  opacity: 0.95;
+}
+
+.swatch-panel:active {
+  transform: scale(0.98);
+}
+
+.swatch-label-badge {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 9px;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.2);
+  color: #FFFFFF;
+}
+
+.tint-badge {
+  background: rgba(0, 0, 0, 0.08);
+  color: #212520;
+}
+
+.swatch-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.swatch-hex {
+  font-family: var(--font-sans);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-sm);
+  letter-spacing: 0.02em;
+}
+
+.swatch-variable {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 10px;
+  opacity: 0.85;
+}
+
+.swatch-copy-hint {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 9px;
+  opacity: 0;
+  transform: translateY(-2px);
+  transition: all var(--transition-fast);
+  background: rgba(0, 0, 0, 0.5);
+  color: #FFF;
+  padding: 1px 5px;
+  border-radius: 3px;
+}
+
+.swatch-panel:hover .swatch-copy-hint {
+  opacity: 1;
+  transform: translateY(0);
+}
