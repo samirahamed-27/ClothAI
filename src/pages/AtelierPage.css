@@ -1,79 +1,94 @@
 /* ==========================================================================
-   ATELIER PAGE STYLES
+   ATELIER HOME PAGE STYLES
+   - Top quote carousel
+   - "Today's look" italic greeting heading
+   - Large rounded "Capture your outfit" card
+   - "Recent looks" grid
    ========================================================================== */
 
 .atelier-page-wrapper {
   padding: var(--space-md) var(--space-md) 100px var(--space-md);
   display: flex;
   flex-direction: column;
-  gap: var(--space-xl);
+  gap: var(--space-lg);
   animation: pageFadeIn 320ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.page-editorial-header {
-  display: flex;
-  flex-direction: column;
-  padding-top: var(--space-xs);
+/* 1. Top Quote Section */
+.atelier-top-quote-section {
+  width: 100%;
 }
 
-.header-badge-row {
+/* 2. Greeting Block ("Today's look" in italic) */
+.atelier-greeting-block {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.greeting-meta-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 6px;
+  margin-bottom: 2px;
 }
 
-.atelier-season-badge {
+.greeting-date-pill {
   font-family: var(--font-sans);
-  font-size: 10px;
+  font-size: 10.5px;
   font-weight: var(--font-weight-semibold);
   letter-spacing: var(--letter-spacing-editorial);
+  text-transform: uppercase;
   color: var(--color-deep-slate-olive);
   background: var(--color-deep-slate-olive-pastel);
   padding: 3px 10px;
   border-radius: var(--radius-pill);
 }
 
-.atelier-live-dot {
+.greeting-capsule-tag {
   font-family: var(--font-sans);
   font-size: 10px;
   font-weight: var(--font-weight-medium);
   letter-spacing: var(--letter-spacing-wide);
-  color: var(--color-nile-blue);
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
+  color: var(--color-light-brown-drab);
 }
 
-.atelier-live-dot::before {
-  content: '';
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background-color: var(--color-nile-blue);
-  box-shadow: 0 0 0 2px var(--color-nile-blue-pastel);
-}
-
-.atelier-heading {
+/* Greeting Heading in Cormorant Garamond Italic */
+.atelier-greeting-heading {
   font-family: var(--font-serif);
-  font-style: italic;
+  font-style: italic; /* Requested explicitly: greeting heading in italic ("Today's look") */
   font-weight: 600;
-  font-size: 3rem;
-  line-height: 1;
+  font-size: 2.6rem;
+  line-height: 1.05;
   color: var(--color-deep-slate-olive);
   letter-spacing: -0.02em;
-  margin: 4px 0 8px 0;
+  margin: 4px 0 2px 0;
 }
 
-.atelier-subheading {
+.atelier-greeting-sub {
   font-family: var(--font-sans);
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-xs);
   color: var(--color-text-muted);
   line-height: var(--line-height-normal);
-  margin-bottom: var(--space-md);
 }
 
-/* Style Guide Banner */
+/* 3. Main Section: Capture Card */
+.atelier-main-capture-section {
+  width: 100%;
+}
+
+/* 4. Recent Looks Section */
+.atelier-recent-looks-section {
+  width: 100%;
+}
+
+/* Footer Banner */
+.atelier-bottom-actions {
+  margin-top: var(--space-xs);
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--color-border-subtle);
+}
+
 .atelier-styleguide-banner {
   display: flex;
   align-items: center;
@@ -119,62 +134,6 @@
 .banner-link-btn:hover {
   background: var(--color-nile-blue);
   color: var(--color-text-inverse);
-}
-
-/* Sections */
-.atelier-section {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-sm);
-}
-
-.section-header-compact {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.section-eyebrow {
-  font-family: var(--font-sans);
-  font-size: 10px;
-  font-weight: var(--font-weight-medium);
-  letter-spacing: var(--letter-spacing-editorial);
-  text-transform: uppercase;
-  color: var(--color-light-brown-drab);
-}
-
-.section-title-sm {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-weight: 600;
-  font-size: 1.25rem;
-  color: var(--color-deep-slate-olive);
-}
-
-/* Footer Quote */
-.atelier-footer-quote {
-  padding-top: var(--space-md);
-  border-top: 1px solid var(--color-border-subtle);
-  text-align: center;
-}
-
-.atelier-quote {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: 1.1rem;
-  line-height: var(--line-height-normal);
-  color: var(--color-deep-slate-olive);
-}
-
-.atelier-quote cite {
-  display: block;
-  font-family: var(--font-sans);
-  font-style: normal;
-  font-size: 11px;
-  letter-spacing: var(--letter-spacing-editorial);
-  text-transform: uppercase;
-  color: var(--color-light-brown-drab);
-  margin-top: 6px;
 }
 
 /* Page fade transition */

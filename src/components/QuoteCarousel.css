@@ -1,0 +1,211 @@
+/* ==========================================================================
+   QUOTE CAROUSEL STYLES
+   Horizontal swipeable fashion quotes carousel with auto-advance
+   ========================================================================== */
+
+.quotes-carousel-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  position: relative;
+  user-select: none;
+}
+
+.carousel-eyebrow-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4px;
+}
+
+.carousel-eyebrow-label {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-editorial);
+  text-transform: uppercase;
+  color: var(--color-light-brown-drab);
+}
+
+.carousel-progress-pill {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--color-deep-slate-olive);
+  background: rgba(75, 84, 67, 0.08);
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+}
+
+/* Viewport */
+.quotes-carousel-viewport {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--radius-soft);
+  touch-action: pan-y;
+  cursor: grab;
+  box-shadow: var(--shadow-subtle);
+  outline: none;
+}
+
+.quotes-carousel-viewport:focus-visible {
+  box-shadow: 0 0 0 2px var(--color-nile-blue), var(--shadow-subtle);
+}
+
+.quotes-carousel-viewport:active {
+  cursor: grabbing;
+}
+
+/* Track */
+.quotes-carousel-track {
+  display: flex;
+  width: 100%;
+  will-change: transform;
+}
+
+/* Quote Card */
+.quote-card {
+  flex: 0 0 100%;
+  width: 100%;
+  min-height: 180px;
+  box-sizing: border-box;
+  padding: var(--space-lg) var(--space-lg);
+  border-radius: var(--radius-soft);
+  border-width: 1px;
+  border-style: solid;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  transition: transform var(--transition-smooth), opacity var(--transition-smooth);
+}
+
+.quote-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-xs);
+}
+
+.quote-card-pill {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-editorial);
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+}
+
+.quote-glyph {
+  font-family: var(--font-serif);
+  font-size: 2.25rem;
+  line-height: 0.8;
+  opacity: 0.28;
+  font-style: italic;
+  font-weight: 600;
+}
+
+.quote-card-text {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400; /* Matching loaded 400 italic font */
+  font-size: 1.15rem;
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+  margin: var(--space-xs) 0 var(--space-sm) 0;
+  quotes: "“" "”";
+}
+
+.quote-card-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-top: var(--space-xs);
+  border-top: 1px dashed rgba(0, 0, 0, 0.08);
+}
+
+.quote-card-author {
+  font-family: var(--font-sans);
+  font-style: normal;
+  font-size: 0.75rem;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.quote-card-context {
+  font-family: var(--font-sans);
+  font-size: 10.5px;
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-muted);
+  letter-spacing: var(--letter-spacing-wide);
+  opacity: 0.85;
+}
+
+/* Nav arrows */
+.carousel-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(8px);
+  color: var(--color-deep-slate-olive);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  opacity: 0;
+  transition: opacity var(--transition-fast), background var(--transition-fast), transform var(--transition-fast);
+  z-index: 2;
+  cursor: pointer;
+}
+
+.quotes-carousel-viewport:hover .carousel-nav-btn,
+.quotes-carousel-viewport:focus-within .carousel-nav-btn {
+  opacity: 1;
+}
+
+.prev-btn {
+  left: 8px;
+}
+
+.next-btn {
+  right: 8px;
+}
+
+.carousel-nav-btn:hover {
+  background: #FFFFFF;
+  transform: translateY(-50%) scale(1.08);
+}
+
+/* Pagination Dots */
+.carousel-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding-top: 4px;
+}
+
+.pagination-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-pill);
+  background: rgba(75, 84, 67, 0.22);
+  transition: all var(--transition-smooth);
+  cursor: pointer;
+  padding: 0;
+  border: none;
+}
+
+.pagination-dot.is-active {
+  width: 18px;
+  background: var(--color-deep-slate-olive);
+}
